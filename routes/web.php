@@ -13,6 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/currency/{shortName}/{date}', 'CurrencyController@fetch');
+Route::get('/currencies/{date}', 'CurrencyController@fetchAll');
+
+Route::post('/add-currency', 'CurrencyController@add');
+
+Route::namespace('App\Http\Controllers')->group(function () {
+    Route::post('/login', 'AuthController@login');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });

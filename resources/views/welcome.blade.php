@@ -9,17 +9,28 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     </head>
     <body class="m-5">
-        <form action="{{ url('/login') }}">
+        <h1>Zaloguj się</h1>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li> 
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        <form action="{{ url('login') }}" method="POST">
+        @csrf
            <div class="mb-1">
                 <label for="email" class="d-block">Email</label>
-                <input type="text" class="d-block"/>
+                <input type="text" name="email" id="email" class="d-block"/>
            </div>
            <div class="mb-1">
-                <label for="password" class="d-block">Password</label>
-                <input type="password" class="d-block"/>
+                <label for="password" class="d-block">Hasło</label>
+                <input type="password" name="password" id="password" class="d-block"/>
            </div>
            <div>
-                <button class="rounded btn btn-primary" type="sumbit">Log in</button>
+                <button class="rounded btn btn-primary" type="sumbit">Zaloguj się</button>
            </div>   
         </form>
     </body>
