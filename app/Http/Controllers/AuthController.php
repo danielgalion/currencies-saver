@@ -9,5 +9,12 @@ class AuthController extends Controller {
             'email' => ['required', 'email'],
             'password' => ['required']
         ])->validate(); 
+
+        if (auth()->attempt(request()->only('email', 'password'))) {
+            return redirect('/logged-in');
+        } else {
+            return redirect()->back()->withErrors(['email' => 'Niepoprawne dane logowania']);
+        }
+
     }
 }
