@@ -9,6 +9,10 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     </head>
     <body class="m-5">
-        <h1>Użytkownik jest zalogowany. Może korzystać z API.</h1>
+        <h1>Użytkownik jest zalogowany.</h1>
+
+        @can('api')
+            <p>Może korzystać z API.</p>
+        @endcan
     </body>
 </html>

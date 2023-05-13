@@ -5,6 +5,10 @@ use App\Http\Controllers\Controller;
 
 class AuthController extends Controller {
     public function login() {
+         return $this->validateLogin();
+    }
+
+    private function validateLogin() {
         validator(request()->all(), [
             'email' => ['required', 'email'],
             'password' => ['required']
@@ -15,6 +19,11 @@ class AuthController extends Controller {
         } else {
             return redirect()->back()->withErrors(['email' => 'Niepoprawne dane logowania']);
         }
+    }
 
+    public function logout() {
+        auth()->logout();
+
+        return redirect('/');
     }
 }
