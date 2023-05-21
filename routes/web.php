@@ -22,4 +22,3 @@ Route::namespace('App\Http\Controllers')->group(function () {
 Route::get('logged-in', function () {
     return view('loggedIn');
 });
-
