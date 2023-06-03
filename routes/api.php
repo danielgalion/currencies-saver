@@ -18,10 +18,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/currency/{shortName}/{date}', 'CurrencyController@fetch');
-Route::get('/currencies/{date}', 'CurrencyController@fetchAll');
-
 Route::namespace('App\Http\Controllers')->group(function () {
+    Route::post('/login', 'AuthApiController@login');
+});
+
+Route::namespace('App\Http\Controllers')->middleware('auth:sanctum')->group(function () {
+    Route::get('/currency/{shortName}/{date}', 'CurrencyController@fetch');
+    Route::get('/currencies/{date}', 'CurrencyController@fetchAll');
     Route::post('/add-currency', 'CurrencyController@add');
 });
 
