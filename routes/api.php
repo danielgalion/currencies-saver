@@ -21,7 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/currency/{shortName}/{date}', 'CurrencyController@fetch');
 Route::get('/currencies/{date}', 'CurrencyController@fetchAll');
 
-Route::namespace('App\Http\Controllers')->group(function () {
+Route::namespace('App\Http\Controllers')->middleware('can:api')->group(function () {
     Route::post('/add-currency', 'CurrencyController@add');
 });
 
