@@ -29,6 +29,10 @@
                 <label for="password" class="d-block">Hasło</label>
                 <input type="password" name="password" id="password" class="d-block"/>
            </div>
+           <div class="mb-1 d-inline-flex">
+                <label for="remember">Zapamiętaj mnie</label>
+                <input type="checkbox" name="remember" id="remember" class="mx-sm-1"/>
+           </div>
            <div>
                 <button class="rounded btn btn-primary" type="sumbit">Zaloguj się</button>
            </div>   
