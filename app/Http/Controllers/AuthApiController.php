@@ -17,4 +17,8 @@ class AuthApiController extends Controller {
             ];
         }
     }
+
+    public function logout() {
+        auth('sanctum')->user()->currentAccessToken()->delete();
+    }
 }
