@@ -23,6 +23,7 @@ Route::namespace('App\Http\Controllers')->group(function () {
     Route::post('/logout', 'AuthApiController@logout');
 });
 
+// @todo add role for API getters
 Route::namespace('App\Http\Controllers')->middleware('auth:sanctum')->group(function () {
     Route::get('/currency/{shortName}/{date}', 'CurrencyController@fetch');
     Route::get('/currencies/{date}', 'CurrencyController@fetchAll');

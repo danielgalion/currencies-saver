@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
+// @todo refactor to DRY and use interface and / or trait
 class AuthApiController extends Controller {
     public function login() {
         validator(request()->all(), ['email' => ['required', 'email'], 'password' => ['required']])->validate();
