@@ -67,14 +67,16 @@ class Currency extends Model {
         return ['date' => $date, 'dateName' => $dateName];
     }
 
-    public function getByCode(string $code, DateTimeImmutable $date) : array {
+    public static function getByCode(string $code, Carbon $date) : array {
 
 
-        return self::where('code', $code)->whereDate('')->first()->get('code', 'amount','created_at', 'updated_at');
+        return self::where('code', $code)->whereDate('updated_at', $date->toDateString())->first()->get('code', 'amount','created_at', 'updated_at')->orderByDesc('updated_at');
     }
 
-    public function getInDay(DateTimeImmutable $date) : array {
+    public static function getInDay(Carbon $date) : array {
         //@todo
+
+        return self::whereDate('updated_at', $date->toDateString())->get('code','amount', 'created_at', 'updated_at');
     }
 
 }

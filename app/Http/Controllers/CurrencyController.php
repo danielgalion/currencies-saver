@@ -12,4 +12,17 @@ class CurrencyController extends Controller {
 
         return response('OK', 200);
     }
+
+    public function fetch(Request $request) {
+        $name = $request->shortName; // string
+        $date = $request->date; // Carbon
+
+        return Currency::getByCode($name, $date);
+    }    
+
+    public function fetchAll(Request $request) {
+        $date = $request->date; // Carbon
+        
+        return Currency::getInDay($date);
+    }
 }
