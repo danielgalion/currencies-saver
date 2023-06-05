@@ -11,6 +11,5 @@ class CurrencyController extends Controller {
         Currency::insertExchangeRate($request->code, $request->amount);
 
         return response('OK', 200);
-        // return view('loggedIn');
     }
 }
